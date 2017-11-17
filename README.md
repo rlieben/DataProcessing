@@ -3,4 +3,4 @@
 Raoul Lieben
 Minor programming University of Amsterdam
 
-GitHub pages: https://github.com/rlieben/DataProcessing
+GitHub pages: http(s)://rlieben.github.io/DataProcessing
