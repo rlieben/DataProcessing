@@ -5,6 +5,7 @@ Raoul Lieben
 */
 
 window.onload = function(){
+	
 	// defining dimensions of svg element
 	var margin = {top: 50, right: 20, bottom: 40, left: 40},
 		width = 960 - margin.left - margin.right,
