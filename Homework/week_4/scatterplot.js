@@ -18,7 +18,7 @@ window.onload = function(){
 	var y = d3.scale.linear()
 		.range([height, 0]);
 
-
+	// creating z variable
 	var z = d3.scale.linear()
 		.range([5, 10]);
 
@@ -34,7 +34,6 @@ window.onload = function(){
 	var yAxis = d3.svg.axis()
 		.scale(y)
 		.orient("left");
-
 
 	// creating svg element incl margins
 	var svg = d3.select("body").append("svg")
@@ -55,14 +54,14 @@ window.onload = function(){
 	d3.json("jsonified.json", function(error, data) {
 		if (error) throw error;
 
-		// 
+		// converts value to number instead of string
 		data.forEach(function(d) {
 			d.population = +d.population;
 			d.renenerg = +d.renenerg;
 			d.totaluse = +d.totaluse;
 		});
 
-		// setting x and y domains
+		// setting x, y and z domains
 		x.domain(d3.extent(data, function(d) { return d.population; })).nice();
 		y.domain(d3.extent(data, function(d) { return d.renenerg; })).nice();
 		z.domain(d3.extent(data, function(d) { return d.totaluse; })).nice();
@@ -108,7 +107,7 @@ window.onload = function(){
 				.style("text-anchor", "end")
 				.text("Renewable energy use(%)")
 
-		// creating dots for data
+		// creating dots for data and sizing them
 		svg.selectAll(".dot")
 			.data(data)
 			.enter().append("circle")
