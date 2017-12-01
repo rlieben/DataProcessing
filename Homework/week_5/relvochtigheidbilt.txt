@@ -1,0 +1,46 @@
+# BRON: KONINKLIJK NEDERLANDS METEOROLOGISCH INSTITUUT (KNMI)
+# Opmerking: door stationsverplaatsingen en veranderingen in waarneemmethodieken zijn deze tijdreeksen van dagwaarden mogelijk inhomogeen! Dat betekent dat deze reeks van gemeten waarden niet geschikt is voor trendanalyse. Voor studies naar klimaatverandering verwijzen we naar de gehomogeniseerde reeks maandtemperaturen van De Bilt <http://www.knmi.nl/kennis-en-datacentrum/achtergrond/gehomogeniseerde-reeks-maandtemperaturen-de-bilt> of de Centraal Nederland Temperatuur <http://www.knmi.nl/kennis-en-datacentrum/achtergrond/centraal-nederland-temperatuur-cnt>.
+# 
+# 
+# STN      LON(east)   LAT(north)     ALT(m)  NAME
+# 260:         5.180       52.100       1.90  DE BILT
+# 
+# YYYYMMDD = Datum (YYYY=jaar MM=maand DD=dag); 
+# UG       = Etmaalgemiddelde relatieve vochtigheid (in procenten); 
+# UX       = Maximale relatieve vochtigheid (in procenten); 
+# UN       = Minimale relatieve vochtigheid (in procenten); 
+# 
+# STN,YYYYMMDD,   UG,   UX,   UN
+# 
+  260,20171001,   80,   98,   63
+  260,20171002,   77,   96,   63
+  260,20171003,   75,   91,   64
+  260,20171004,   73,   97,   61
+  260,20171005,   80,   97,   65
+  260,20171006,   83,   94,   66
+  260,20171007,   88,   98,   73
+  260,20171008,   86,   97,   66
+  260,20171009,   94,   98,   89
+  260,20171010,   88,   97,   81
+  260,20171011,   79,   89,   70
+  260,20171012,   76,   92,   57
+  260,20171013,   86,   96,   76
+  260,20171014,   89,  100,   73
+  260,20171015,   83,  100,   63
+  260,20171016,   79,   94,   66
+  260,20171017,   86,   98,   73
+  260,20171018,   89,   98,   73
+  260,20171019,   84,  100,   68
+  260,20171020,   81,   95,   72
+  260,20171021,   76,   93,   57
+  260,20171022,   89,   97,   75
+  260,20171023,   82,   97,   65
+  260,20171024,   94,   98,   88
+  260,20171025,   88,  100,   77
+  260,20171026,   87,   98,   69
+  260,20171027,   77,   90,   58
+  260,20171028,   81,   93,   75
+  260,20171029,   71,   92,   53
+  260,20171030,   77,   95,   55
+  260,20171031,   85,   93,   77
+  260,20171101,   84,   97,   70
