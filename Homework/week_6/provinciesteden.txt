@@ -1,0 +1,12 @@
+noordholland = ijmuiden
+limburg = maastricht
+zuidholland = rotterdam
+utrecht = de bilt
+flevoland = lelystad
+friesland = leeuwarden
+zeeland = vlissingen
+brabant = eindhoven
+drenthe = hoogeveen
+gelderland = herwijnen
+groningen = nieuw beerta
+overijssel = heino

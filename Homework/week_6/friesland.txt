@@ -1,0 +1,43 @@
+# BRON: KONINKLIJK NEDERLANDS METEOROLOGISCH INSTITUUT (KNMI)
+# Opmerking: door stationsverplaatsingen en veranderingen in waarneemmethodieken zijn deze tijdreeksen van dagwaarden mogelijk inhomogeen! Dat betekent dat deze reeks van gemeten waarden niet geschikt is voor trendanalyse. Voor studies naar klimaatverandering verwijzen we naar de gehomogeniseerde reeks maandtemperaturen van De Bilt <http://www.knmi.nl/kennis-en-datacentrum/achtergrond/gehomogeniseerde-reeks-maandtemperaturen-de-bilt> of de Centraal Nederland Temperatuur <http://www.knmi.nl/kennis-en-datacentrum/achtergrond/centraal-nederland-temperatuur-cnt>.
+# 
+# 
+# STN      LON(east)   LAT(north)     ALT(m)  NAME
+# 270:         5.752       53.224       1.20  LEEUWARDEN
+# 
+# YYYYMMDD = Datum (YYYY=jaar MM=maand DD=dag); 
+# TG       = Etmaalgemiddelde temperatuur (in 0.1 graden Celsius); 
+# 
+# STN,YYYYMMDD,   TG
+# 
+  270,20171101,  121
+  270,20171102,   92
+  270,20171103,   91
+  270,20171104,  101
+  270,20171105,   73
+  270,20171106,   62
+  270,20171107,   47
+  270,20171108,   60
+  270,20171109,   84
+  270,20171110,   79
+  270,20171111,   66
+  270,20171112,   55
+  270,20171113,   70
+  270,20171114,   81
+  270,20171115,   97
+  270,20171116,   89
+  270,20171117,   55
+  270,20171118,   71
+  270,20171119,   70
+  270,20171120,   70
+  270,20171121,  105
+  270,20171122,  108
+  270,20171123,   94
+  270,20171124,   56
+  270,20171125,   32
+  270,20171126,   50
+  270,20171127,   67
+  270,20171128,   55
+  270,20171129,   33
+  270,20171130,   11
+  270,20171201,    3

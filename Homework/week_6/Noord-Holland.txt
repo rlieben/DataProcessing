@@ -1,0 +1,43 @@
+# BRON: KONINKLIJK NEDERLANDS METEOROLOGISCH INSTITUUT (KNMI)
+# Opmerking: door stationsverplaatsingen en veranderingen in waarneemmethodieken zijn deze tijdreeksen van dagwaarden mogelijk inhomogeen! Dat betekent dat deze reeks van gemeten waarden niet geschikt is voor trendanalyse. Voor studies naar klimaatverandering verwijzen we naar de gehomogeniseerde reeks maandtemperaturen van De Bilt <http://www.knmi.nl/kennis-en-datacentrum/achtergrond/gehomogeniseerde-reeks-maandtemperaturen-de-bilt> of de Centraal Nederland Temperatuur <http://www.knmi.nl/kennis-en-datacentrum/achtergrond/centraal-nederland-temperatuur-cnt>.
+# 
+# 
+# STN      LON(east)   LAT(north)     ALT(m)  NAME
+# 225:         4.555       52.463       4.40  IJMUIDEN
+# 
+# YYYYMMDD = Datum (YYYY=jaar MM=maand DD=dag); 
+# TG       = Etmaalgemiddelde temperatuur (in 0.1 graden Celsius); 
+# 
+# STN,YYYYMMDD,   TG
+# 
+  225,20171101,     
+  225,20171102,     
+  225,20171103,     
+  225,20171104,     
+  225,20171105,     
+  225,20171106,     
+  225,20171107,     
+  225,20171108,     
+  225,20171109,     
+  225,20171110,     
+  225,20171111,     
+  225,20171112,     
+  225,20171113,     
+  225,20171114,     
+  225,20171115,     
+  225,20171116,     
+  225,20171117,     
+  225,20171118,     
+  225,20171119,     
+  225,20171120,     
+  225,20171121,     
+  225,20171122,     
+  225,20171123,     
+  225,20171124,     
+  225,20171125,     
+  225,20171126,     
+  225,20171127,     
+  225,20171128,     
+  225,20171129,     
+  225,20171130,     
+  225,20171201,     

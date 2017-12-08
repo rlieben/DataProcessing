@@ -1,0 +1,43 @@
+# BRON: KONINKLIJK NEDERLANDS METEOROLOGISCH INSTITUUT (KNMI)
+# Opmerking: door stationsverplaatsingen en veranderingen in waarneemmethodieken zijn deze tijdreeksen van dagwaarden mogelijk inhomogeen! Dat betekent dat deze reeks van gemeten waarden niet geschikt is voor trendanalyse. Voor studies naar klimaatverandering verwijzen we naar de gehomogeniseerde reeks maandtemperaturen van De Bilt <http://www.knmi.nl/kennis-en-datacentrum/achtergrond/gehomogeniseerde-reeks-maandtemperaturen-de-bilt> of de Centraal Nederland Temperatuur <http://www.knmi.nl/kennis-en-datacentrum/achtergrond/centraal-nederland-temperatuur-cnt>.
+# 
+# 
+# STN      LON(east)   LAT(north)     ALT(m)  NAME
+# 279:         6.574       52.750      15.80  HOOGEVEEN
+# 
+# YYYYMMDD = Datum (YYYY=jaar MM=maand DD=dag); 
+# TG       = Etmaalgemiddelde temperatuur (in 0.1 graden Celsius); 
+# 
+# STN,YYYYMMDD,   TG
+# 
+  279,20171101,  117
+  279,20171102,   91
+  279,20171103,   85
+  279,20171104,   99
+  279,20171105,   75
+  279,20171106,   49
+  279,20171107,   23
+  279,20171108,   63
+  279,20171109,   76
+  279,20171110,   78
+  279,20171111,   52
+  279,20171112,   46
+  279,20171113,   58
+  279,20171114,   69
+  279,20171115,   90
+  279,20171116,   90
+  279,20171117,   52
+  279,20171118,   55
+  279,20171119,   58
+  279,20171120,   64
+  279,20171121,  108
+  279,20171122,  106
+  279,20171123,  103
+  279,20171124,   61
+  279,20171125,   28
+  279,20171126,   37
+  279,20171127,   58
+  279,20171128,   49
+  279,20171129,   22
+  279,20171130,   18
+  279,20171201,   11
