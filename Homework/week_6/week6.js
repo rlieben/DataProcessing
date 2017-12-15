@@ -1,102 +1,100 @@
-	
+/*
+Minor programming, University of Amsterdam
+Dataprocessing
+10556346
+Raoul Lieben
+*/
+window.onload = function(){
+
 	// filters data for key(province), is used later
 	function filterJSON(json, key, value) {
-  		var result = [];
-	  json.forEach(function(val,idx,arr){
-	    if(val[key] == value){
-	    
-	      result.push(val)
-	    }
-	  })
-	  return result;
+
+	var result = [];
+	json.forEach(function(val,idx,arr){
+		if(val[key] == value){
+
+		result.push(val)
+	}
+	})
+	// console.log(result)
+	return result;
 	}
 
 	// set width and height
-	var width = 960,
-		height = 550;
+	var margin = {left: 200, right: 100, top: 50, bottom: 200},
+	mapwidth = 960 - margin.left - margin.right,
+	mapheight = 550 - margin.top - margin.bottom,
+	graphwidth = 750 - margin.left - margin.right,
+	graphheight = 450 - margin.top - margin.bottom;
+
 
 	// date transform
-	var format = d3.time.format("%Y-%m-%d").parse;
+	var format = d3.time.format("%Y%m%d").parse;
 
 	// colour scheme for provinces
 	var colour = d3.scale.category20();
 
 
 	var projection = d3.geo.mercator()
-		.scale(1)
-		.translate([0, 0]);
+	.scale(1)
+	.translate([0, 0]);
 
 	var path = d3.geo.path()
-		.projection(projection);
+	.projection(projection);
 
 	var svg = d3.select("body").append("svg")
-		.attr("width", width)
-		.attr("height", height);
-
-	// appending name to svg element
-	svg.append("text")
-		.attr("x", 0)             
-		.attr("y", 20)
-		.attr("text-anchor", "left")  
-		.style("font-size", "12px")
-		.text("Name: Raoul Lieben ");
+	.attr("width", mapwidth - margin.right -  50)
+	.attr("height", mapheight + margin.top);
 
 	// appending title to svg element
 	svg.append("text")
-		.attr("x", (width / 4))             
-		.attr("y", 20)
-		.attr("text-anchor", "middle")  
-		.style("font-size", "12px") 
-		.style("text-decoration", "underline")  
-		.text("Average temperature per province of the Netherlands");
+	.attr("x", (mapwidth / 2 - margin.right))             
+	.attr("y", 10)
+	.attr("text-anchor", "middle")  
+	.style("font-size", "12px") 
+	.style("text-decoration", "underline")  
+	.style('fill', 'black')
+	.text("Average temperature per province of the Netherlands");
 
 	// creating graph element
 	var graph = d3.select('body').append("svg")
-		svg.append("rect")
-		.attr("class", "background")
-		.attr("width", width / 2)
-		.attr("height", height)
-		.attr('x', width / 2);
-
-	// appending title to svg element
-	graph.append("text")
-		.attr("x", (width / 2))             
-		.attr("y", height)
-		.attr("text-anchor", "middle")  
-		.style("font-size", "12px") 
-		.style("text-decoration", "underline")  
-		.text("Average humidity in Maastricht and de Bilt with max and min range");
+	.attr("width", graphwidth + margin.left)
+	.attr("height", graphheight + margin.top + margin.bottom)
+	.append("g")	
+		.attr("transform", "translate(" + 50 + "," + margin.top + ")");
 
 	// set x and y axis
-	var x = d3.scale.ordinal().rangeRoundBands([0, width], 1),
-		y = d3.scale.linear().rangeRound([height, 0]);
+	var x = d3.scale.ordinal().rangeRoundBands([0, graphwidth], 1),
+	y = d3.scale.linear().range([graphheight , 0]);
 
 	// Define the axes
-	var xAxis = d3.svg.axis().scale(x)
-	    .orient("bottom").ticks(5)
-	    .tickFormat(d3.time.format("%Y"))
-	// // creating x axis
-	// var xAxis = d3.svg.axis()
-	//     .scale(x)
-	//     .orient("bottom");
+	var xAxis = d3.svg.axis()
+	.scale(x)
+	.orient("bottom")
+	.ticks(5);
 
-// creating y axis
+	// creating y axis
 	var yAxis = d3.svg.axis()
-	    .scale(y)
-	    .orient("left")
-	    .ticks(10, "celsius");
+	.scale(y)
+	.orient("left")
+	.ticks(5);
 
-	// Define the line
-	var provinceline = d3.svg.line()
-		.interpolate("cardinal")
-	    .x(function(d) { return x(d.date); })
-	    .y(function(d) { return y(d.gemhum); });
+	// creating tip on bar
+	var tipmap = d3.tip()
+	.attr('class', 'd3-tip')
+	.offset([-10, 0])
+	.html(function(d) {
+		return "<strong>Province:</strong> <span style='color:red'>" + d.properties.name + "</span>";
+	});
 
-// create queue
+	svg.call(tipmap);
+
+	// create queue
 	queue()
-		.defer(d3.json, 'nld.json')
-		.defer(d3.json, 'jsonified.json')
-		.await(generateMap);
+	.defer(d3.json, 'nld.json')
+	// .defer(d3.json, 'inwoneraantal.json')
+	.defer(d3.json, 'jsonified.json')
+	.await(generateMap);
 
 	// generate map
 	function generateMap(error, nld, jsonified){
@@ -107,8 +105,8 @@
 		// creating map
 		var l = topojson.feature(nld, nld.objects.subunits).features[3],
 			b = path.bounds(l),
-			s = .2 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
-			t = [(width - s * (b[1][0] + 2 * b[1][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
+			s = .2 / Math.max((b[1][0] - b[0][0]) / mapwidth, (b[1][1] - b[0][1]) / mapheight),
+			t = [(mapwidth - s * (b[1][0] + 2 * b[1][0])) / 2, (mapheight - s * (b[1][1] + b[0][1])) / 2];
 
 		projection
 			.scale(s)
@@ -127,6 +125,12 @@
 					return d.properties.name;
 				});
 
+		jsonified.forEach(function(d) {
+				d.date = format(d.date.toString());
+				d.gemhum = +d.gemhum;
+			});
+
+
 		// hover element
 		let hoverEnabled = false;
 			svg.on('mousedown', x => hoverEnabled = true)
@@ -136,150 +140,100 @@
 					this.class.list.add('hovered')
 					
 				} 
-		
+
 		svg.append("path")
 			.attr("class", "provinceborders")
 			.attr("d", path(topojson.mesh(nld, nld.objects.subunits, function(a, b) { return a !== b; })))
-		
-		// extract province name
-		svg.selectAll('.provinces path').on('mouseover', function(d) {
-			provincename = d.properties.name
-			console.log(provincename)
 
+		svg.selectAll('.provinces path')
+			.on('mouseover', tipmap.show)
+			.on('mouseout', tipmap.hide);
+
+		// extract province name
+		svg.selectAll('.provinces path').on('click', function(d) {
+			
+			
+			provincename = d.properties.name
+
+			console.log(provincename)
 			// filter data on name
 			var data = filterJSON(jsonified, 'province', provincename);
-	      
-		    data.forEach(function(d) {
-    			d.date = +d.date;
-    			d.gemhum = +d.gemhum;
-    		});
+		  
 
-    		updateGraph(data)
+			console.log(data)
 
-		})
-		})
-}
+			// remove previous line of graph
+			graph.selectAll('path').remove();
+			
 
-// update graph function does not work yet.
-function updateGraph(data) {
-    
+			updateGraph(data, jsonified)
 
-    // scale the range of the data
-    x.domain(d3.extent(data, function(d) { return d.date; }));
-    y.domain([0, d3.max(data, function(d) { return d.gemhum; })]);
+		});
+		});
+	};
 
-	
- 	var province = svg.selectAll(".line")
-      	.data(result, function(d){return d.gemhum});
 
-	province.enter().append("path")
-		.attr("class", "line");
+	// update graph function
+	function updateGraph(data, jsonified) {
 
-	province.transition()
-		.style("stroke", function(d,i) { return d.color = color(d.province); })
-		.attr("id", function(d){ return 'tag'+d.province.replace(/\s+/g, '');}) // assign ID
-		.attr("d", function(d){
-		
-				return provinceline(d.gemhum)
-			});
 
-		province.exit().remove();
-		
-		var legend = d3.select("#legend")
-			.selectAll("text")
-			.data(dataNest, function(d){return d.province});
+	// scale the range of the data on whole dataset
+	x.domain(jsonified.map(function(d) { return d.date; }));
+	y.domain([0, d3.max(jsonified, function(d) { return d.gemhum; })]);
 
-		//checkboxes
-		legend.enter().append("rect")
-		  .attr("width", 10)
-		  .attr("height", 10)
-		  .attr("x", 0)
-		  .attr("y", function (d, i) { return 0 +i*15; })  // spacing
-		  .attr("fill",function(d) { 
-		    return color(d.province);
-		    
-		  })
-		  .attr("class", function(d,i){return "legendcheckbox " + d.province})
-			.on("click", function(d){
-			  d.active = !d.active;
-			  
-			  d3.select(this).attr("fill", function(d){
-			    if(d3.select(this).attr("fill")  == "#ccc"){
-			      return color(d.province);
-			    }else {
-			      return "#ccc";
-			    }
-			  })
-			  
-			  
-			 var result = dataNest.filter(function(val,idx, arr){
-         return $("." + val.province).attr("fill") != "#ccc" 
-       // matching the data with selector status
-      })
-      
-       // Hide or show the lines based on the ID
-       graph.selectAll(".line").data(result, function(d){return d.province})
-         .enter()
-         .append("path")
-         .attr("class", "line")
-         .style("stroke", function(d,i) { return d.color = color(d.province); })
-        .attr("d", function(d){
-                return provinceline(d.gemhum);
-         });
- 
-      graph.selectAll(".line").data(result, function(d){return d.province}).exit().remove()  
-					
-			})
-		        
-    // Add the Legend text
-    legend.enter().append("text")
-      .attr("x", 15)
-      .attr("y", function(d,i){return 10 +i*15;})
-      .attr("class", "legend");
 
-		legend.transition()
-      .style("fill", "#777" )
-      .text(function(d){return d.province;});
+	console.log(data)
 
-		legend.exit().remove();
+	// remove all previous text
+	graph.selectAll("text").remove()
 
-		graph.selectAll(".axis").remove();
+	// append x-axis values to chart
+	graph.append("g")
+			.attr("class", "x axis")
+		.attr("transform", "translate(0," + graphheight + ")")
+		.call(xAxis)
+		.selectAll("text")  
+			.style("text-anchor", "end")
+			.attr("dx", "-.15em")
+			.attr("dy", ".25em")
+			.attr("transform", "rotate(-65)");
 
-    // Add the X Axis
-    graph.append("g")
-        .attr("class", "x axis")
-        .attr("transform", "translate(0," + height + ")")
-        .call(xAxis);
+	// append y-axis values to chart
+	graph.append("g")
+			.attr("class", "y axis")
+			.call(yAxis)
+		.append("text")
+			.attr("transform", "rotate(-90)")
+			.attr("y", 6)
+			.attr("dy", ".71em")
+			.style("text-anchor", "end")
+			.text("Temperature * 10 (C)");
 
-    // Add the Y Axis
-    graph.append("g")
-        .attr("class", "y axis")
-        .call(yAxis);
+
+	// appending title to graph element
+	graph.append("g").append("text")
+		.attr("x", (graphwidth / 2))             
+		.attr("y",  - margin.top / 2)
+		.attr("text-anchor", "middle")  
+		.style("font-size", "12px")
+		.style("text-decoration", "underline")
+		.style('fill', 'black')
+		.text("Average temp in " + data[0]['province'] + " in November 2017");
+
+	// create line for average
+	var line = d3.svg.line()
+		.x(function(d) { return x(d.date); })
+		.y(function(d) { return y(d.gemhum); });
+
+	// append line to graph
+	graph.append("g").append("path")
+		.datum(data)
+		.attr("fill", "none")
+		.attr("stroke", "steelblue")
+		.attr("stroke-linejoin", "round")
+		.attr("stroke-linecap", "round")
+		.attr("stroke-width", 1.5)
+		.attr("d", line);
+
+	};
 };
-
-function clearAll(){
-  d3.selectAll(".line")
-	.transition().duration(100)
-			.attr("d", function(d){
-        return null;
-      });
-  d3.select("#legend").selectAll("rect")
-  .transition().duration(100)
-      .attr("fill", "#ccc");
-};
-
-function showAll(){
-  d3.selectAll(".line")
-	.transition().duration(100)
-			.attr("d", function(d){
-        return provinceline(d.gemhum);
-      });
-  d3.select("#legend").selectAll("rect")
-  .attr("fill",function(d) {
-    if (d.active == true){
-       return color(d.province);
-     }
-   })
-};
-
-	

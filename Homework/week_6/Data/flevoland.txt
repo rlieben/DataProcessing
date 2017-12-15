@@ -1,0 +1,43 @@
+# BRON: KONINKLIJK NEDERLANDS METEOROLOGISCH INSTITUUT (KNMI)
+# Opmerking: door stationsverplaatsingen en veranderingen in waarneemmethodieken zijn deze tijdreeksen van dagwaarden mogelijk inhomogeen! Dat betekent dat deze reeks van gemeten waarden niet geschikt is voor trendanalyse. Voor studies naar klimaatverandering verwijzen we naar de gehomogeniseerde reeks maandtemperaturen van De Bilt <http://www.knmi.nl/kennis-en-datacentrum/achtergrond/gehomogeniseerde-reeks-maandtemperaturen-de-bilt> of de Centraal Nederland Temperatuur <http://www.knmi.nl/kennis-en-datacentrum/achtergrond/centraal-nederland-temperatuur-cnt>.
+# 
+# 
+# STN      LON(east)   LAT(north)     ALT(m)  NAME
+# 269:         5.520       52.458      -3.70  LELYSTAD
+# 
+# YYYYMMDD = Datum (YYYY=jaar MM=maand DD=dag); 
+# TG       = Etmaalgemiddelde temperatuur (in 0.1 graden Celsius); 
+# 
+# STN,YYYYMMDD,   TG
+# 
+  269,20171101,  113
+  269,20171102,   96
+  269,20171103,   95
+  269,20171104,  107
+  269,20171105,   76
+  269,20171106,   60
+  269,20171107,   32
+  269,20171108,   62
+  269,20171109,   83
+  269,20171110,   87
+  269,20171111,   66
+  269,20171112,   56
+  269,20171113,   70
+  269,20171114,   74
+  269,20171115,   93
+  269,20171116,   93
+  269,20171117,   53
+  269,20171118,   67
+  269,20171119,   67
+  269,20171120,   74
+  269,20171121,  112
+  269,20171122,  111
+  269,20171123,  106
+  269,20171124,   65
+  269,20171125,   29
+  269,20171126,   46
+  269,20171127,   65
+  269,20171128,   48
+  269,20171129,   21
+  269,20171130,   17
+  269,20171201,    2
